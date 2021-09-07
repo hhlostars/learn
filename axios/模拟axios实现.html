@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Axios 构造函数
+    function Axios(instanceConfig) {
+      this.defaults = instanceConfig;
+      this.interceptors = {
+        request: {},
+        response: {}
+      }
+    }
+
+    Axios.prototype.request = function () {
+      // 发送ajax
+      console.log('');
+    }
+
+    let context = new Axios({ text: 'test' });
+    let instance = Axios.prototype.request.bind(context);
+    console.log(instance);
+
+    var anObj = { 100: 'a', 2: 'b', 7: 'c', 99: 's' };
+    console.log(Object.keys(anObj)); // console: ['2', '7', '100']
+  </script>
+</body>
+
+</html>

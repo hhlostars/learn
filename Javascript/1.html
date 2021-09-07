@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function test(name) {
+    //   this.name = name;
+    //   return this
+    // }
+
+    const createUser = ({ userName, avatar }) => ({
+      userName,
+      avatar,
+      setUserName(userName) {
+        this.userName = userName;
+        return this;
+      }
+    });
+    console.log(createUser({ userName: 'echo', avatar: 'echo.png' }));
+
+
+    // console.log(test('qwe').name);
+
+
+    const noop = () => { foo: 'bar' };
+    console.log(typeof noop);
+    console.log(noop);
+    console.log(noop()); // undefined
+    const createFoo = () => ({ foo: 'bar' });
+    console.log(createFoo()); // { foo: "bar" }
+  </script>
+</body>
+
+</html>
