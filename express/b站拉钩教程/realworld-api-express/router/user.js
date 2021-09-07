@@ -32,4 +32,14 @@ router.get('/user', async (req, res, next) => {
   }
 })
 
+// 更新当前登录用户
+router.put('/user', async (req, res, next) => {
+  try {
+    // 处理请求
+    res.send('put /user')
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router

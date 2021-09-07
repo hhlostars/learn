@@ -3,17 +3,17 @@ const express = require('express')
 const router = express()
 
 // 获取用户资料
-router.post('/profiles/:username', async (req, res, next) => {
+router.get('/:username', async (req, res, next) => {
   try {
     // 处理请求
-    res.send(`post profiles/${req.params}`)
+    res.send(`get profiles/${req.params}`)
   } catch (error) {
     next(error)
   }
 })
 
 // 关注用户
-router.post('/users', async (req, res, next) => {
+router.post('/:username/follow', async (req, res, next) => {
   try {
     // 处理请求
     res.send('post /users')
@@ -23,10 +23,10 @@ router.post('/users', async (req, res, next) => {
 })
 
 // 取消关注用户
-router.get('/user', async (req, res, next) => {
+router.delete('/:username/follow', async (req, res, next) => {
   try {
     // 处理请求
-    res.send('get /user')
+    res.send('delete /user')
   } catch (error) {
     next(error)
   }
