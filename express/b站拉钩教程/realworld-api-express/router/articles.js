@@ -1,5 +1,6 @@
 const express = require('express')
 const articlesCtrl = require('../controller/articles')
+const auth = require('../middleware/auth')
 
 const router = express.Router()
 
@@ -16,7 +17,7 @@ router.get('/articles/:slug', articlesCtrl.getArticleBySlug)
 
 
 // 创建文章
-router.post('/articles', articlesCtrl.createArticle)
+router.post('/articles', auth, articlesCtrl.createArticle)
 
 // 更新文章
 router.put('/articles/:slug', articlesCtrl.updateArticleBySlug)

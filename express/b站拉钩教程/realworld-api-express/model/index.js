@@ -3,8 +3,6 @@ const { dbUri } = require('../config/config.default')
 
 mongoose.connect(dbUri);
 
-const Cat = mongoose.model('Cat', { name: String });
-
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));

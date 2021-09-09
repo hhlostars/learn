@@ -6,6 +6,9 @@ const router = express.Router()
 router.use(require('./user'))
 
 // 文章相关路由
+router.use(require('./articles'))
+
+// 文章相关路由
 router.use('/profiles', require('./profile'))
 
 router.get('/', (req, res) => {
