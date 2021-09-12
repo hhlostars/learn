@@ -1,5 +1,4 @@
-const { Article } = require('../model')
-
+const { Article, User } = require('../model')
 // 创建文章
 exports.createArticle = async (req, res, next) => {
   try {
@@ -20,8 +19,29 @@ exports.createArticle = async (req, res, next) => {
 // 获取文章列表
 exports.getArticles = async (req, res, next) => {
   try {
-    const articles = await Article.find()
     const articlesCount = await Article.countDocuments()
+    const { 
+      limit = 20,
+      offset = 0,
+      tag,
+      author
+    } = req.query
+
+    const filter = {}
+    if (tag) {
+      filter.tagList = tag
+    }
+    if(author) {
+      const user = await User.findOne({ username: author})
+      filter.author = user ? user._id : null
+    }
+
+    const articles = await Article.find(filter)
+      .skip(Number.parseInt(offset))    //跳过多少条
+      .limit(parseInt(limit))   //取多少条
+      .sort({
+        // createdAt: -1
+      })
     res.status(200).json({
       articles,
       articlesCount
@@ -45,7 +65,7 @@ exports.getArticlesFeed = async (req, res, next) => {
 exports.getArticleById = async (req, res, next) => {
   try {
     const article = await Article.findById(req.params.articleId).populate('author')
-    if(!article) {
+    if (!article) {
       return res.status(404).end
     }
 
