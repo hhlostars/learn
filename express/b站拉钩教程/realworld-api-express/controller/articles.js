@@ -20,8 +20,12 @@ exports.createArticle = async (req, res, next) => {
 // 获取文章列表
 exports.getArticles = async (req, res, next) => {
   try {
-    // 处理请求
-    res.send('get /articles')
+    const articles = await Article.find()
+    const articlesCount = await Article.countDocuments()
+    res.status(200).json({
+      articles,
+      articlesCount
+    })
   } catch (error) {
     next(error)
   }

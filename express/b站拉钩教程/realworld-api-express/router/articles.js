@@ -5,7 +5,7 @@ const articleValidator = require('../validator/article')
 const router = express.Router()
 
 // 获取文章列表
-router.get('/articles', articlesCtrl.getArticles)
+router.get('/', articlesCtrl.getArticles)
 
 
 // 获取限制的文章列表
