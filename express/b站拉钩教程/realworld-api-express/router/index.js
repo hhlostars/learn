@@ -6,7 +6,7 @@ const router = express.Router()
 router.use(require('./user'))
 
 // 文章相关路由
-router.use(require('./articles'))
+router.use('/articles', require('./articles'))
 
 // 文章相关路由
 router.use('/profiles', require('./profile'))

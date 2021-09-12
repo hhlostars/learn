@@ -1,7 +1,7 @@
 const express = require('express')
 const articlesCtrl = require('../controller/articles')
 const auth = require('../middleware/auth')
-
+const articleValidator = require('../validator/article')
 const router = express.Router()
 
 // 获取文章列表
@@ -13,11 +13,10 @@ router.get('/articles/feed', articlesCtrl.getArticlesFeed)
 
 
 // 获取单个具体文章
-router.get('/articles/:slug', articlesCtrl.getArticleBySlug)
-
+router.get('/:articleId', articleValidator.getArticle, articlesCtrl.getArticleById)
 
 // 创建文章
-router.post('/articles', auth, articlesCtrl.createArticle)
+router.post('/', auth, articleValidator.createArticle, articlesCtrl.createArticle)
 
 // 更新文章
 router.put('/articles/:slug', articlesCtrl.updateArticleBySlug)

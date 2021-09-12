@@ -1,3 +1,22 @@
+const { Article } = require('../model')
+
+// 创建文章
+exports.createArticle = async (req, res, next) => {
+  try {
+    // 处理请求
+    const article = new Article(req.body.article)
+    article.author = req.user._id
+    article.populate('author').exec
+    await article.save()
+    console.log(article);
+    res.status(201).json({
+      article
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
 // 获取文章列表
 exports.getArticles = async (req, res, next) => {
   try {
@@ -19,20 +38,16 @@ exports.getArticlesFeed = async (req, res, next) => {
 }
 
 // 获取单个具体文章
-exports.getArticleBySlug = async (req, res, next) => {
+exports.getArticleById = async (req, res, next) => {
   try {
-    // 处理请求
-    res.send('get /articles/:slug')
-  } catch (error) {
-    next(error)
-  }
-}
+    const article = await Article.findById(req.params.articleId).populate('author')
+    if(!article) {
+      return res.status(404).end
+    }
 
-// 创建文章
-exports.createArticle = async (req, res, next) => {
-  try {
-    // 处理请求
-    res.send('post /articles')
+    res.status(200).json({
+      article
+    })
   } catch (error) {
     next(error)
   }
