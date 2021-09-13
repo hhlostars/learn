@@ -40,6 +40,7 @@ exports.getArticles = async (req, res, next) => {
       .skip(Number.parseInt(offset))    //跳过多少条
       .limit(parseInt(limit))   //取多少条
       .sort({
+        // -1 倒序  1 升序排序
         // createdAt: -1
       })
     res.status(200).json({
@@ -78,10 +79,9 @@ exports.getArticleById = async (req, res, next) => {
 }
 
 // 更新文章
-exports.updateArticleBySlug = async (req, res, next) => {
+exports.updateArticleById = async (req, res, next) => {
   try {
-    // 处理请求
-    res.send('put /articles/:slug')
+    
   } catch (error) {
     next(error)
   }

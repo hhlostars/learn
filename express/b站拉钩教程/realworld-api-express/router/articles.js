@@ -19,7 +19,7 @@ router.get('/:articleId', articleValidator.getArticle, articlesCtrl.getArticleBy
 router.post('/', auth, articleValidator.createArticle, articlesCtrl.createArticle)
 
 // 更新文章
-router.put('/articles/:slug', articlesCtrl.updateArticleBySlug)
+router.put('/:articleId', auth, articleValidator.updateArticle, articlesCtrl.updateArticleById)
 
 // 删除文章
 router.delete('/articles/:slug', articlesCtrl.deleteArticleBySlug)
