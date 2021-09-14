@@ -1,0 +1,6 @@
+<view class="orderList">
+    <view wx:if="{{ list.length == 0}}">
+        <text>没有图片</text>
+    </view>
+    <view wx:else=""></view>
+</view>

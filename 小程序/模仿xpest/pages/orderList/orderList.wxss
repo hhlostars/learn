@@ -1,0 +1,30 @@
+.title-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+    background: #ffffff;
+}
+
+.title-group text {
+    font-size: 28rpx;
+}
+
+.title-group text.text-select {
+    color: #ff3162;
+}
+
+.bottom-line {
+    margin-top: 22rpx;
+    width: 108rpx;
+    height: 4rpx;
+    background-color: #ff3162;
+}
+
+.white-bottom-line {
+    margin-top: 22rpx;
+    width: 108rpx;
+    height: 4rpx;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>checkbox</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,6 L12,10 C12,11.1045695 11.1045695,12 10,12 L2,12 C0.8954305,12 0,11.1045695 0,10 L0,2 C0,0.8954305 0.8954305,0 2,0 L8.09655309,0" id="path-1"></path>
+    </defs>
+    <g id="checkbox" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(2.000000, 2.000000)">
+            <g id="Rectangle-9">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <path stroke="#FF3162" stroke-width="1" d="M11.5,6.14832985 L7.82534072,0.5 L2,0.5 C1.17157288,0.5 0.5,1.17157288 0.5,2 L0.5,10 C0.5,10.8284271 1.17157288,11.5 2,11.5 L10,11.5 C10.8284271,11.5 11.5,10.8284271 11.5,10 L11.5,6.14832985 Z"></path>
+            </g>
+            <polyline id="Path-5" stroke="#FF3162" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" points="2.89255905 4.91054309 5.58269463 8.17446992 12.371326 1.64661626"></polyline>
+        </g>
+    </g>
+</svg>

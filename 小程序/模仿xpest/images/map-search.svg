@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>map-search</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M5.05126928,11.8180702 L7.05126928,11.8180702 L7.05126928,15.8180702 C7.05126928,16.370355 6.60355403,16.8180702 6.05126928,16.8180702 L6.05126928,16.8180702 C5.49898453,16.8180702 5.05126928,16.370355 5.05126928,15.8180702 L5.05126928,11.8180702 Z" id="path-1"></path>
+    </defs>
+    <g id="map-search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(9.253048, 9.253048) rotate(-45.000000) translate(-9.253048, -9.253048) translate(3.253048, 0.753048)">
+            <circle id="Oval-5" stroke="#979797" stroke-width="1.375" cx="6.20710678" cy="5.79289322" r="5.5"></circle>
+            <g id="Rectangle">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <path stroke="#979797" stroke-width="1.375" d="M5.73876928,12.5055702 L5.73876928,15.8180702 C5.73876928,15.9906592 5.8786803,16.1305702 6.05126928,16.1305702 C6.22385827,16.1305702 6.36376928,15.9906592 6.36376928,15.8180702 L6.36376928,12.5055702 L5.73876928,12.5055702 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

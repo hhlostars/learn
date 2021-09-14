@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>mdpi/技师端/图标/勾选/list_check_box_active</title>
+    <desc>Created with Sketch.</desc>
+    <g id="技师端/图标/勾选/list_check_box_active" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group"></g>
+        <rect id="矩形" fill="#00BCFF" x="0" y="0" width="16" height="16" rx="2"></rect>
+        <path d="M13.0866342,3.18287277 C13.5430847,2.66830229 14.3008161,3.34771023 13.8740768,3.88892084 L6.05796421,13.8016781 C5.85132363,14.0637493 5.46537393,14.0665139 5.25525049,13.807428 L2.12880545,9.95246687 C1.71796782,9.44589693 2.3788568,8.76607033 2.86549608,9.19466654 L5.60984253,11.6116858 L13.0866342,3.18287277 Z" id="Path-28" fill="#FFFFFF" fill-rule="nonzero"></path>
+    </g>
+</svg>

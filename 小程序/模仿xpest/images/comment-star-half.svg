@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>comment-star-half</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="12" height="24"></rect>
+    </defs>
+    <g id="comment-star-half" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Star" stroke="#DEDEDE" fill="#F3F3F3" stroke-linecap="round" stroke-linejoin="round" points="12 19 4.94657697 22.7082039 6.2936609 14.854102 0.587321804 9.29179607 8.47328849 8.14589803 12 1 15.5267115 8.14589803 23.4126782 9.29179607 17.7063391 14.854102 19.053423 22.7082039"></polygon>
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Mask"></g>
+        <path d="M12,19.5648879 L5.17924754,23.1507696 C4.81243385,23.343615 4.38371763,23.0321345 4.45377281,22.6236814 L5.75642062,15.0286619 L0.238315959,9.64983925 C-0.0584425506,9.36057119 0.105312472,8.85658506 0.515422646,8.79699256 L8.14125573,7.68889415 L11.551632,0.778717144 C11.7350388,0.407094285 12.2649612,0.407094285 12.448368,0.778717144 L15.8587443,7.68889415 L23.4845774,8.79699256 C23.8946875,8.85658506 24.0584426,9.36057119 23.761684,9.64983925 L18.2435794,15.0286619 L19.5462272,22.6236814 C19.6162824,23.0321345 19.1875662,23.343615 18.8207525,23.1507696 L12,19.5648879 Z" id="Mask" fill="#00BCFF" fill-rule="nonzero" mask="url(#mask-2)"></path>
+    </g>
+</svg>
