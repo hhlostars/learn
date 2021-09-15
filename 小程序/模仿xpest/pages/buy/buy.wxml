@@ -1,3 +1,0 @@
-<view>
-  <order_list list="{{ buylist }}"></order_list>
-</view>

@@ -1,0 +1,26 @@
+<!--pages/buy/buy.wxml-->
+<view class="sidebar">
+  <view class="side-item {{ index== menuActive ? 'active' : ''}}" wx:for="{{ sideBar }}" wx:key="index" data-index="{{ index }}" bindtap="sideLink">
+    {{ item }}
+  </view>
+</view>
+
+<view class="side-con">
+  <block wx:if="{{ menuActive == 3 }}">
+    <view class="tips">欢迎咨询并获取专属方案</view>
+    <view class="link center contact">
+      在线沟通  
+      <button open-type="contact"></button>
+    </view>
+
+    <view class="link center" bindtap="callPhone">
+      热线电话
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="link" wx:for="{{contentArray[menuActive]}}" wx:key="index" bindtap="selectService" data-id="{{item.icon}}" data-title="{{item.name}}">
+      {{item.name}}
+    </view>
+  </block>
+</view>

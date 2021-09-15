@@ -1,0 +1,28 @@
+/* pages/buy/buy.wxss */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 194rpx;
+    background-color: #eee;
+    padding-top: 72rpx;
+}
+
+.side-item {
+    height: 72rpx;
+    font-size: 28rpx;
+    color: #002A4A;
+    padding-left: 48rpx;
+    line-height: 72rpx;
+}
+
+.side-item.active {
+    background-color: #fff;
+    color: #00B8EE;
+    /* position: relative; */
+}
+
+.side-con {
+    padding-left: 194rpx;
+    padding-top: 72rpx;
+}
