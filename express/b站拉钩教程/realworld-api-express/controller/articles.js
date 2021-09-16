@@ -81,7 +81,16 @@ exports.getArticleById = async (req, res, next) => {
 // 更新文章
 exports.updateArticleById = async (req, res, next) => {
   try {
-    
+    const article = req.article
+    const bodyArticle = req.body.article
+    article.title = bodyArticle.title || article.title
+    article.description = bodyArticle.description || article.description
+    article.body = bodyArticle.body || article.body
+    await article.save()
+    res.status(200).json({
+      article
+    })
+    res.send('updated')
   } catch (error) {
     next(error)
   }
@@ -90,8 +99,11 @@ exports.updateArticleById = async (req, res, next) => {
 // 删除文章
 exports.deleteArticleBySlug = async (req, res, next) => {
   try {
-    // 处理请求
-    res.send('delete /articles/:slug')
+    const article = req.article
+    await article.remove()
+    res.status(204).json({
+      "msg": "删除成功"
+    })
   } catch (error) {
     next(error)
   }

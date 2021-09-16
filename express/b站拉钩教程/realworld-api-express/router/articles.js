@@ -13,7 +13,7 @@ router.get('/articles/feed', articlesCtrl.getArticlesFeed)
 
 
 // 获取单个具体文章
-router.get('/:articleId', articleValidator.getArticle, articlesCtrl.getArticleById)
+router.get('/:articleId', auth, articleValidator.getArticle, articlesCtrl.getArticleById)
 
 // 创建文章
 router.post('/', auth, articleValidator.createArticle, articlesCtrl.createArticle)
@@ -22,7 +22,7 @@ router.post('/', auth, articleValidator.createArticle, articlesCtrl.createArticl
 router.put('/:articleId', auth, articleValidator.updateArticle, articlesCtrl.updateArticleById)
 
 // 删除文章
-router.delete('/articles/:slug', articlesCtrl.deleteArticleBySlug)
+router.delete('/:articleId', auth, articleValidator.deleteArticle, articlesCtrl.deleteArticleBySlug)
 
 // 添加文章评论
 router.post('/articles/:slug/comments', articlesCtrl.addArticleComments)

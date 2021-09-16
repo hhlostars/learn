@@ -10,7 +10,38 @@
     </block>
 </view>
 
-<scroll-view scroll-y="true">
+<scroll-view scroll-y="true" style="padding-top: 110rpx; padding-bottom: 110rpx;">
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
+    <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
     <order_list list="{{history_list}}" wx:if="{{select_tap == 0}}"></order_list>
     <order_list list="{{current_list}}" wx:if="{{select_tap == 1}}"></order_list>
 </scroll-view>
