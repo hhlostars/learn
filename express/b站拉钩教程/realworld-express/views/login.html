@@ -2,7 +2,7 @@
 {{extend './layout/layout.html'}}
 
 {{block 'body'}}
-<div class="auth-page">
+<div class="auth-page" id="login">
   <div class="container page">
     <div class="row">
 
@@ -15,21 +15,33 @@
         </p>
 
         <ul class="error-messages">
-          <li>That email is already taken</li>
+          <li v-for="(error, index) in errors" ::key="index">
+            {% error.msg %}
+          </li>
         </ul>
 
-        <form>
+        <!-- 
+          同步提交
+          提交表单
+          Content-Type: application/x-www-form-urlencoded
+
+          异步提交
+          
+        -->
+
+        <!-- <form action="/register" method="POST"> -->
+        <form @submit.prevent="handleSubmit">
           {{ if !isLogin}}
           <fieldset class="form-group">
-            <input class="form-control form-control-lg" type="text" placeholder="Your Name">
+            <input v-model="user.username" class="form-control form-control-lg" type="text" placeholder="Your Name">
           </fieldset>
           {{ /if}}
 
           <fieldset class="form-group">
-            <input class="form-control form-control-lg" type="text" placeholder="Email">
+            <input v-model="user.email" class="form-control form-control-lg" type="text" placeholder="Email">
           </fieldset>
           <fieldset class="form-group">
-            <input class="form-control form-control-lg" type="password" placeholder="Password">
+            <input v-model="user.password" class="form-control form-control-lg" type="password" placeholder="Password">
           </fieldset>
           <button class="btn btn-lg btn-primary pull-xs-right">
             {{ isLogin ? 'Sign in' : 'Sign up'}}
@@ -41,3 +53,48 @@
   </div>
 </div>
 {{/block}}
+
+{{ block 'script'}}
+<script>
+  ;(() => {
+    const app = new Vue({
+      el: '#login',
+      data() {
+        return {
+          user: {
+            username: '',
+            email: '',
+            password: ''
+          },
+          errors: []
+        }
+      },
+      methods: {
+        async handleSubmit() {
+          // 表单验证
+          // 验证通过
+          try {
+            const { data } = await axios.post('/register', {
+              user: this.user
+            })
+            
+            // 清除错误信息
+            this.errors = []
+            // 跳转首页
+            window.location.href = '/'
+          } catch (error) {
+            console.dir(error);
+            if(error.response.status === 400) {
+              this.errors = error.response.data.errors
+            }
+          }
+        }
+      },
+      created() {
+        console.log('start');
+      },
+    })
+
+  })()
+</script>
+{{ /block }}

@@ -2,13 +2,22 @@ const express = require('express')
 const morgan = require('morgan')
 const errorhandler = require('errorhandler')
 const path = require('path')
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+const { sessionSecret } = require('./config/config.default')
+
+const mongoose = require('mongoose')
 
 // const errorHandler = require('./middleware/error-handler')
 require('./model')
 
 const router = require('./router')
+const { options } = require('./router')
 
 const app = express()
+
+
 
 app.use(morgan('dev'))
 
@@ -16,6 +25,31 @@ app.use(express.json())
 app.use(express.urlencoded({
   extended: true
 }))
+
+// 配置session中间件
+// 存储session
+//  1. 生成sessionId  2. 存储数据 req.session.xxx = xxx
+// 获取session
+// 根据sessionId 获取容器中的数据
+// req.session.xxx
+// 注意： 默认数据存储在内存中
+app.use(session({
+  secret: sessionSecret,        // 签发session id 密钥
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60
+  },
+  store: MongoStore.create({
+    mongoUrl: 'mongodb://1.117.165.105:27027/realworld'
+  })
+}))
+
+// 全局挂载sessionUser
+app.use((req, res, next) => {
+  app.locals.sessionUser = req.session.user
+  next()
+})
 
 const port = process.env.PORT || 3000
 
