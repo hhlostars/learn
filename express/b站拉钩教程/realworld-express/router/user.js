@@ -12,7 +12,11 @@ router.get('/register', noauth, userCtrl.showRegister)
 
 router.post('/register', userValidator.register, userCtrl.register)
 
+router.post('/login', userValidator.login, userCtrl.login)
+
 router.get('/settings', auth, userCtrl.showSettings)
+
+router.get('/logout', userCtrl.logout)
 
 
 router.get('/profile/:username', auth, userCtrl.showProfile)

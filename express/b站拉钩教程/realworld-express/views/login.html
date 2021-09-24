@@ -10,9 +10,11 @@
         <h1 class="text-xs-center">
           {{ isLogin ? 'Sign in' : 'Sign up'}}
         </h1>
+        {{ if !isLogin}}
         <p class="text-xs-center">
-          <a href="">Have an account?</a>
+          <a href="/login">Have an account?</a>
         </p>
+        {{ /if }}
 
         <ul class="error-messages">
           <li v-for="(error, index) in errors" ::key="index">
@@ -74,7 +76,10 @@
           // 表单验证
           // 验证通过
           try {
-            const { data } = await axios.post('/register', {
+            
+            const url = window.location.pathname === '/login' ? '/login' : '/register'
+
+            const { data } = await axios.post(url, {
               user: this.user
             })
             
