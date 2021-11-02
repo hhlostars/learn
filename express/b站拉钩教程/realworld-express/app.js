@@ -45,16 +45,18 @@ app.use(session({
   })
 }))
 
-// 全局挂载sessionUser
-app.use((req, res, next) => {
-  app.locals.sessionUser = req.session.user
-  next()
-})
+
 
 const port = process.env.PORT || 3000
 
 // 挂载路由
 app.use(router)
+
+// 全局挂载sessionUser
+app.use((req, res, next) => {
+  app.locals.sessionUser = req.session.user
+  next()
+})
 
 // 挂载统一处理服务端错误中间件
 // app.use(errorHandler())
