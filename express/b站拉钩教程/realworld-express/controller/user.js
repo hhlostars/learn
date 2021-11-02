@@ -55,3 +55,27 @@ exports.register = async (req, res, next) => {
     next(error)
   }
 }
+
+// logout
+exports.logout = async (req, res, next) => {
+  try {
+    // 清除用户的登陆状态
+    req.session.user = null
+    res.redirect('/')
+  } catch (error) {
+    next(error)
+  }
+}
+
+// login
+exports.login = async (req, res, next) => {
+  try {
+    const user = req.user
+    req.session.user = user
+    res.status(200).json({
+      user
+    })
+  } catch (error) {
+    next(error)
+  }
+}

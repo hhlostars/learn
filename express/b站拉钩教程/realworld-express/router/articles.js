@@ -12,4 +12,6 @@ router.get('/article/:articleId', auth, articlesCtrl.showEditor)
 
 router.get('/article/:articleId', articlesCtrl.showArticle)
 
+router.post('/articles', auth, articleValidator.createArticle, articlesCtrl.createArticle)
+
 module.exports = router

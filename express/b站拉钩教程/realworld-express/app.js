@@ -7,24 +7,13 @@ const MongoStore = require('connect-mongo');
 
 const { sessionSecret } = require('./config/config.default')
 
-const mongoose = require('mongoose')
-
 // const errorHandler = require('./middleware/error-handler')
 require('./model')
 
 const router = require('./router')
-const { options } = require('./router')
 
 const app = express()
 
-
-
-app.use(morgan('dev'))
-
-app.use(express.json())
-app.use(express.urlencoded({
-  extended: true
-}))
 
 // 配置session中间件
 // 存储session
@@ -38,7 +27,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    maxAge: 1000 * 60
+    maxAge: 1000 * 60 * 60 * 12
   },
   store: MongoStore.create({
     mongoUrl: 'mongodb://1.117.165.105:27027/realworld'
@@ -60,6 +49,9 @@ app.use((req, res, next) => {
 
 // 挂载统一处理服务端错误中间件
 // app.use(errorHandler())
+// 托管静态资源
+app.use('/public', express.static(path.join(__dirname, '/public')))
+app.use('/node_modules', express.static(path.join(__dirname, '/node_modules')))
 
 // view engine setup
 // 当渲染 .art结尾的文件时， 使用express-art-template
@@ -70,9 +62,22 @@ app.set('view options', {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-// 托管静态资源
-app.use('/public', express.static(path.join(__dirname, '/public')))
-app.use('/node_modules', express.static(path.join(__dirname, '/node_modules')))
+
+app.use(morgan('dev'))
+
+app.use(express.json())
+app.use(express.urlencoded({
+  extended: true
+}))
+
+
+const port = process.env.PORT || 3000
+
+// 挂载统一处理服务端错误中间件
+// app.use(errorHandler())
+
+
+app.use(router)
 
 if (process.env.NODE_ENV === 'development') {
   app.use(errorhandler())
