@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = ['foo', 'bar'];
+    console.log(arr[Symbol.iterator]);
+    let iter = arr[Symbol.iterator]()
+    // console.log(iter);
+    // console.log(iter.next());
+    // arr.splice(1, 0, 'bar')
+    // console.log(iter.next());
+    // console.log(iter.next());
+    for (const i of arr) {
+      console.log(i);
+    }
+    for (const i of iter) {
+      console.log(i);
+    }
+
+    // 迭代器实现
+    class Foo {
+      [Symbol.iterator]() {
+        return {
+          next() {
+            return {
+              done: false,
+              value: 'foo'
+            }
+          }
+        }
+      }
+    }
+    let f = new Foo();
+    console.log(f[Symbol.iterator]().next());
+
+    class Counter {
+      // Counter 的实例应该迭代 limit 次
+      constructor(limit) {
+        this.count = 1
+        this.limit = limit;
+      }
+      next() {
+        if(this.count <= this.limit) {
+          return { done: false, value: this.count++ };
+        } else {
+          return { done: false, value: undefined}
+        }
+      }
+      [Symbol.iterator]() {
+        return this;
+      }
+    }
+    let counter = new Counter(3)[Symbol.iterator]()
+    console.log(counter);
+    // for (const i of counter) {
+    //   console.log(i);
+    // }
+
+  </script>
+</body>
+</html>
