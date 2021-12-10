@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name, age) {
+        // this 指向实例对象
+        this.name = name;
+        this.age = age
+      }
+
+      speak() {
+        console.log(`我叫${this.name},年龄是${this.age}`);
+      }
+    }
+
+    class Student extends Person {
+      constructor(name, age, grade) {
+        super(name, age)
+        this.grade = grade
+      }
+      speak() {
+        console.log(`我叫${this.name},年龄是${this.age},年龄是${this.grade}`);
+      }
+    }
+
+    const p1 = new Person('hh', 24)
+    const p2 = new Person('vv', 24)
+
+    const s1 = new Student('ss', 22, '高一')
+
+    // console.log(p1);
+    // console.log(p2);
+    // console.log(s1);
+    // s1.speak()
+
+    class Car {
+      constructor(name, price) {
+        this.name = name
+        this.price = price
+        // this.wheel = 4
+      }
+
+      // 类中可以直接写赋值语句
+      wheel = 4
+
+    }
+
+    const c1 = new Car('宝马', '100w')
+    const c2 = new Car('奔驰', '150w')
+    console.log(c1);
+    console.log(c2);
+  </script>
+</body>
+</html>

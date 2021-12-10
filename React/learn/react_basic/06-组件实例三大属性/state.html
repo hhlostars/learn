@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <!-- 准备好一个容器 -->
+  <div id="app">
+
+  </div>
+
+  <!-- 引入核心库 -->
+  <script src="../../js/react.development.js"></script>
+
+  <!-- 引入react-dom -->
+  <script src="../../js/react-dom.development.js"></script>
+
+  <!-- 将jsx转换成js -->
+  <script src="../../js/babel.min.js"></script>
+
+  <!-- 此处一定要写 babel -->
+  <script type="text/babel">
+    // 创建函数式组件
+    // 大写
+    // function Demo() {
+    //   console.log(this);
+    //   return <h2>我是用函数定义的组件</h2>
+    // }
+
+    // 类创建
+    // 必须继承
+    // 必须render
+    class Weather extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          isHot: true
+        }
+      }
+      render() {
+        console.log(this);
+        return <h2 onClick={this.demo.bind(this)}>今天天气很，{this.state.isHot ? '炎热' : '寒冷'}</h2>
+      }
+
+      demo() {
+            console.log('demo');
+            console.log(this);
+          this.state.isHot = !this.state.isHot
+      }
+    }
+
+    ReactDOM.render(<Weather />, document.getElementById('app'))
+
+    
+    /*
+       
+    */
+
+
+    
+  </script>
+</body>
+
+</html>

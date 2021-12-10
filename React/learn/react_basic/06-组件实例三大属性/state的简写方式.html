@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <!-- 准备好一个容器 -->
+  <div id="app">
+
+  </div>
+
+  <!-- 引入核心库 -->
+  <script src="../../js/react.development.js"></script>
+
+  <!-- 引入react-dom -->
+  <script src="../../js/react-dom.development.js"></script>
+
+  <!-- 将jsx转换成js -->
+  <script src="../../js/babel.min.js"></script>
+
+  <!-- 此处一定要写 babel -->
+  <script type="text/babel">
+    class Weather extends React.Component {
+      constructor() {
+
+      }
+
+      render() {
+        return <h1>今天天气很，{}</h1>
+      }
+    }    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js创建虚拟dom</title>
+</head>
+
+<body>
+  <!-- 准备好一个容器 -->
+  <div id="app">
+
+  </div>
+
+  <!-- 引入核心库 -->
+  <script src="../../js/react.development.js"></script>
+
+  <!-- 引入react-dom -->
+  <script src="../../js/react-dom.development.js"></script>
+
+  <!-- 将jsx转换成js -->
+  <!-- <script src="../../js/babel.min.js"></script> -->
+
+
+  <script type="text/javascript">
+    //  创建vdom
+    // const VDOM = React.createElement(标签名, 标签属性, 标签体内容)
+    // 传统 js 的写法 
+    // 嵌套的 vdom 
+    const VDOM = React.createElement('h1', { id: 'title' }, React.createElement('span', {}, 'Hello React'))
+    // 渲染虚拟DOM到页面
+    ReactDOM.render(VDOM, document.getElementById('app'))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsx创建虚拟dom</title>
+</head>
+
+<body>
+  <!-- 准备好一个容器 -->
+  <div id="app">
+
+  </div>
+
+  <!-- 引入核心库 -->
+  <script src="../../js/react.development.js"></script>
+
+  <!-- 引入react-dom -->
+  <script src="../../js/react-dom.development.js"></script>
+
+  <!-- 将jsx转换成js -->
+  <script src="../../js/babel.min.js"></script>
+
+  <!-- 此处一定要写 babel -->
+  <script type="text/babel">
+    //  创建vdom
+    // const VDOM = <h1 id="test">Hello React</h1>
+    const VDOM = (
+      <h1>
+        <span>Hello React</span>
+      </h1>
+    )
+    // 不适用 jsx 创建
+    // const VDOM2 = React.createElement('h1', {id: 'title2'}, 'Hello, React')
+    // 渲染虚拟DOM到页面
+    // ReactDOM.render(VDOM, document.getElementById('app'))
+    ReactDOM.render(VDOM, document.getElementById('app'))
+  </script>
+</body>
+
+</html>
