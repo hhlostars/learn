@@ -6,8 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-  </style>
 </head>
 
 <body>
@@ -27,15 +25,26 @@
 
   <!-- 此处一定要写 babel -->
   <script type="text/babel">
-    class Weather extends React.Component {
-      constructor() {
-
+    //  创建vdom
+    class Person extends React.Component {
+      constructor(props) {
+        super(props)
       }
 
       render() {
-        return <h1>今天天气很，{}</h1>
+        console.log(this);
+        const {name, age, sex} = this.props
+        return (
+          <ul>
+            <li>性别: {this.props.sex}</li>
+            <li>年龄: {this.props.age}</li>
+            <li>姓名: {this.props.name}</li>
+          </ul>
+        )
       }
-    }    
+    }
+    // 渲染虚拟DOM到页面
+    ReactDOM.render(<Person name='胡鹤' age='18' sex='男' />, document.getElementById('app'))
   </script>
 </body>
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>函数式组件</title>
   <style>
   </style>
 </head>
@@ -25,8 +25,17 @@
   <!-- 将jsx转换成js -->
   <script src="../../js/babel.min.js"></script>
 
+  <script>
+    function test() {
+      // 此处为window
+      console.log(this);
+    }
+    test()
+  </script>
   <!-- 此处一定要写 babel -->
+  <!-- babel 会开启 严格模式 -->
   <script type="text/babel">
+
     // 创建函数式组件
     // 大写
     function Demo() {
@@ -34,7 +43,7 @@
       return <h2>我是函数式组件</h2>
     }
 
-    ReactDOM.render(<Demo/>, document.getElementById('app'))
+    ReactDOM.render(<Demo />, document.getElementById('app'))
   </script>
 </body>
 
