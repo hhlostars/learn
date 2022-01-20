@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>3_react生命周期(新)</title>
+	<style>
+		.list {
+			width: 200px;
+			height: 150px;
+			background-color: skyblue;
+			overflow: auto;
+		}
+
+		.news {
+			height: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 准备好一个“容器” -->
+	<div id="test"></div>
+
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+	<!-- 引入react-dom，用于支持react操作DOM -->
+	<script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+	<!-- 引入babel，用于将jsx转为js -->
+	<script type="text/javascript" src="../js/17.0.1/babel.min.js"></script>
+
+	<script type="text/babel">
+		//创建组件
+		class NewsList extends React.Component {
+			state = { arr: [] }
+
+			componentDidMount() {
+				setInterval(() => {
+					const { arr } = this.state
+					const news = `新闻${arr.length + 1}`
+					arr.unshift(news)
+					this.setState(arr)
+				}, 1000)
+			}
+
+			getSnapshotBeforeUpdate() {
+				console.log(this.refs.list.scrollHeight);
+				return this.refs.list.scrollHeight
+			}
+
+			componentDidUpdate(preProps, preState, height) {
+				console.log('now', this.refs.list.scrollHeight);
+				console.log(this.refs.list.scrollTop);
+				this.refs.list.scrollTop = 30
+				// this.refs.list.scrollTop += 30
+			}
+
+			render() {
+				const { arr } = this.state
+				return (
+					<div className="list" ref="list">
+						{
+							arr.map((x, index) => {
+								return <div className="news" key={index}>{x}</div>
+							})
+						}
+					</div>
+				)
+			}
+		}
+
+		//渲染组件
+		ReactDOM.render(<NewsList />, document.getElementById('test'))
+	</script>
+</body>
+
+</html>

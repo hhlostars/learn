@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11_高阶函数_函数柯里化</title>
+</head>
+
+<body>
+  <!-- 准备好容器 -->
+  <div id="app">
+
+  </div>
+
+
+  <!-- 引入react 核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+
+  <!-- 引入react-dom 支持react操作dom-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel 将 jsx 转换成 js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <!-- 要通过 babel 转换 -->
+  <script type="text/babel">
+    class Demo extends React.Component {
+      state = {
+        username: '',
+        password: ''
+      }
+      change = (payload, value) => {
+
+        // console.log(payload, event.target.value);
+        this.setState({ [payload]: value })
+
+      }
+      // change1 = (event) => {
+      //   // event.preventDefault();
+      //   // const {username, password} = this
+      //   // alert(`你输入的用户名是${username.value}, 密码是${password.value}`)
+      //   console.log(event.target.value);
+      //   this.setState({username: event.target.value})
+      // }
+      // change2 = (event) => {
+      //   // event.preventDefault();
+      //   // const {username, password} = this
+      //   // alert(`你输入的用户名是${username.value}, 密码是${password.value}`)
+      //   console.log(event.target.value);
+      //   this.setState({ password: event.target.value })
+      // }
+
+      handleSubmit = (event) => {
+        event.preventDefault();
+        const { username, password } = this.state
+        alert(`你输入的用户名是${username}, 密码是${password}`)
+      }
+      render() {
+        return (
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              用户名:
+              <input onChange={(event) => { this.change('username', event.target.value) }} type="text" name="username" />
+              密码:
+              <input onChange={(event) => { this.change('password', event.target.value) }} type="text" name="password" />
+              <button>登录</button>
+            </form>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Demo />, document.getElementById('app'))
+
+  </script>
+</body>
+
+</html>

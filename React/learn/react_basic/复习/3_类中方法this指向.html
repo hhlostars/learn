@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      study() {
+        // 类中定义的方法 在局部开启了 严格模式 所以是undefined
+        console.log(this);
+      }
+    }
+
+    let p1 = new Person('huhe', 25)
+    p1.study()
+
+    const x = p1.study
+    x()
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>state</title>
+</head>
+
+<body>
+  <!-- 准备好容器 -->
+  <div id="test1">
+
+  </div>
+  <div id="test2">
+
+  </div>
+  <div id="test3">
+
+  </div>
+  <div id="test4">
+
+  </div>
+
+  <!-- 引入react 核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+
+  <!-- 引入react-dom 支持react操作dom-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel 将 jsx 转换成 js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <!-- 引入prop-types 对组件标签属性进行限制 -->
+  <script src="../js/prop-types.js"></script>
+  <!-- 要通过 babel 转换 -->
+  <script type="text/babel">
+    // 创建类式组件
+    class Demo extends React.Component {
+      constructor(props) {
+       super()
+      }
+      // 给类自身加属性
+      static propTypes = {
+        name: PropTypes.string.isRequired,
+        speak: PropTypes.func
+      }
+      static defaultProps = {
+        name: 'default',
+        age: 12,
+        sex: '男'
+      }
+      // 自定义方法
+      changeCnt = () => {
+        // 状态只读 不允许直接更改
+        const { cnt } = this.props
+        // cnt++
+        // isHot = !isHot 错误
+        // 由于该函数 是通过onClick回调的 不是通过实例调用的 所以是undefined
+        // this.setState({ cnt: cnt+1 })
+      }
+
+      render() {
+        // console.log(this);
+        const { name, age, sex } = this.props
+        // props 是只读的
+        // this.props.name = 'xiugai'
+        return (
+          <ul>
+            <li>性别: {name}</li>
+            <li>姓名: {sex}</li>
+            <li>年龄: {age + 1}</li>
+          </ul>
+        )
+      }
+    }
+
+    
+    const p = { name: 'ttt', age: 19, sex: '女' }
+    ReactDOM.render(<Demo name="huhe" age={18} sex="女" speak={speak}/>, document.getElementById('test1'))
+    ReactDOM.render(<Demo name={p.name} age={p.age} sex={p.sex} />, document.getElementById('test2'))
+    ReactDOM.render(<Demo {...p} />, document.getElementById('test3'))
+    ReactDOM.render(<Demo />, document.getElementById('test4'))
+
+    function speak() {
+      console.log('speak');
+    }
+    const title = document.getElementById('title')
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ref</title>
+</head>
+
+<body>
+  <!-- 准备好容器 -->
+  <div id="app">
+
+  </div>
+
+
+  <!-- 引入react 核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+
+  <!-- 引入react-dom 支持react操作dom-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel 将 jsx 转换成 js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <!-- 要通过 babel 转换 -->
+  <script type="text/babel">
+    /*
+      1.通过onXxx属性指定事件处理函数(注意大小写)
+        (1)	React使用的是自定义(合成)事件, 而不是使用的原生DOM事件      ————————    为了更好的兼容性
+        (2)	React中的事件是通过事件委托方式处理的(委托给组件最外层的元素) ————————    为了高效
+      2.通过event.target得到发生事件的DOM元素对象
+
+
+    */
+    class Demo extends React.Component {
+      // React.createRef 调用后可以返回一个容器, 该容器可以存储被ref标识的节点, 该容器是独有的 只能存一个ref
+      input1 = React.createRef()
+      input2 = React.createRef()
+      showData1 = () => {
+        // const { input1 } = this.refs
+        console.log(this.input1.current.value);
+      }
+
+      showData2 = (event) => {
+        // const { input2 } = this.refs
+        console.log(event.target.value);
+        // console.log(this.input2.current.value);
+      }
+      render() {
+        return (
+          <div>
+            <input type="text" ref={this.input1} />
+            <button onClick={this.showData1}>提示</button>
+            <br />
+            <input type="text" placeholder="失去焦点提示" onBlur={this.showData2} />
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Demo />, document.getElementById('app'))
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原生</title>
+</head>
+<body>
+  <ul id="list">
+
+  </ul>
+
+  <script type="text/javascript">
+    let perArr = [
+      {id: '001', name: '李现', age: 19},
+      {id: '002', name: '鹿晗', age: 18},
+    ]
+
+    let list = document.getElementById('list')
+    let htmlStr = ''
+    perArr.forEach(item => {
+      htmlStr += `<li>${item.name}</li>`
+    })
+    list.innerHTML = htmlStr
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsx小练习 </title>
+</head>
+
+<body>
+  <!-- 准备好容器 -->
+  <div id="test">
+
+  </div>
+
+  <!-- 引入react 核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+
+  <!-- 引入react-dom 支持react操作dom-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel 将 jsx 转换成 js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <!-- 要通过 babel 转换 -->
+  <script type="text/babel">
+    /*
+      注意区分 [js语句] 与 [js表达式]
+        1.表达式: 一个表达式会产生一个值
+          下面都是表达式
+            (1). a
+            (2). a + b
+            (3). demo(1)
+            (4). arr.map()
+            (4). function test() {}
+        2.语句(代码):
+          下面这些都是语句(代码):
+            (1).if(){}
+            (2).for(){}
+            (3).switch(){}
+         
+
+
+    */
+    const list = ['Vue', 'React', 'Angular']
+    const obj = {name: 'huhe'}
+    // 创建虚拟dom
+    const VDOM = (
+      <div>
+        <h1>前端js框架列表</h1>
+        <ul>
+          {
+            list.map(x => <li key={x}>{x}</li>)
+
+          }
+        </ul>
+      </div>
+    )
+    // 渲染虚拟dom 到页面
+    ReactDOM.render(VDOM, document.getElementById('test'))
+  </script>
+</body>
+
+</html>

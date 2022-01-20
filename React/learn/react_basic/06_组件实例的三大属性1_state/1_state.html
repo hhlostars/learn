@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>state</title>
+</head>
+
+<body>
+  <!-- 准备好容器 -->
+  <div id="test">
+
+  </div>
+
+  <!-- 引入react 核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+
+  <!-- 引入react-dom 支持react操作dom-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel 将 jsx 转换成 js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <!-- 要通过 babel 转换 -->
+  <script type="text/babel">
+    let that
+    // 创建函数式组件
+    class Demo extends React.Component {
+      // 构造器调用几次    ——        1次
+      // render调用几次   ——        1+n次
+      constructor() {
+        super()
+        that = this
+        this.state = { isHot: false, wind: '微风' }
+      }
+
+      changeWether() {
+        // 状态只读 不允许直接更改
+        const { isHot } = this.state
+        // isHot = !isHot 错误
+        // 由于该函数 是通过onClick回调的 不是通过实例调用的 所以是undefined
+        // console.log(this);
+        // 更新操作是替换 不是合并
+        this.setState({ isHot: !isHot })
+      }
+
+      render() {
+        const { isHot, wind } = this.state
+        return <h1 id="title" onClick={this.changeWether.bind(this)}>今天天气很{isHot ? '炎热' : '凉爽'}, {wind}</h1>
+      }
+    }
+
+    ReactDOM.render(<Demo />, document.getElementById('test'))
+
+    const title = document.getElementById('title')
+    // title.addEventListener('click', () => {
+    //   console.log(11);
+    // })
+
+    // title.onclick = () => {
+    //   console.log('222');
+    // }
+
+    // function demo() {
+    //   console.log(that);
+    // }
+  </script>
+</body>
+
+</html>

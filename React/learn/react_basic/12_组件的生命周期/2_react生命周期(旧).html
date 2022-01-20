@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1_引出组件的生命周期</title>
+</head>
+
+<body>
+  <!-- 准备好容器 -->
+  <div id="app">
+
+  </div>
+
+
+  <!-- 引入react 核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+
+  <!-- 引入react-dom 支持react操作dom-->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel 将 jsx 转换成 js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+
+  <!-- 要通过 babel 转换 -->
+  <script type="text/babel">
+    class Count extends React.Component {
+      constructor(props) {
+        console.log('Count---constructor');
+        super(props)
+        this.state = {
+          count: 0
+        }
+      }
+
+      add = () => {
+        let { count } = this.state
+        console.log(count);
+        this.setState({ count: count + 1 })
+      }
+
+      componentWillMount() {
+        console.log('Count---componentWillMount');
+      }
+
+      death = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('app'))
+      }
+
+      componentWillUnmount() {
+        console.log('Count---componentWillUnmount');
+      }
+
+      shouldComponentUpdate() {
+        console.log('Count---shouldComponentUpdate');
+        return true
+      }
+
+      componentWillUpdate() {
+        console.log('Count---componentWillUpdate');
+      }
+
+
+      componentDidUpdate() {
+        console.log('Count---componentDidUpdate');
+      }
+
+      force = () => {
+        this.forceUpdate()
+      }
+
+
+      render() {
+        console.log('render');
+        let { count } = this.state
+        return (
+          <div>
+            <h2>当前和为: {count} </h2>
+            <button onClick={this.add}>+1</button>
+            <button onClick={this.force}>强制更新</button>
+            <button onClick={this.death}>卸载组件</button>
+          </div>
+        )
+      }
+
+      componentDidMount() {
+        console.log('Count---componentDidMount');
+      }
+
+
+    }
+
+    class A extends React.Component {
+      state = { carName: '奔驰' }
+      changeCar = () => {
+        this.setState({ carName: '奥拓' })
+      }
+      render() {
+        return (
+          <div>
+            <div>我是A组件</div>
+            <button onClick={this.changeCar}>换车</button>
+            <B carName={this.state.carName} />
+          </div>
+        )
+      }
+    }
+    class B extends React.Component {
+      componentWillReceiveProps(props) {
+        console.log('B------componentWillReceiveProps', props);
+      }
+      shouldComponentUpdate() {
+        console.log('B------shouldComponentUpdate');
+        return true
+      }
+      componentWillUpdate() {
+        console.log('B------componentWillUpdate');
+      }
+      componentDidUpdate() {
+        console.log('B------componentDidUpdate');
+      }
+      render() {
+        console.log('B------render');
+        return (
+          <div>
+            <div>我是B组件,我接收到的车位{this.props.carName}</div>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<A />, document.getElementById('app'))
+
+  </script>
+</body>
+
+</html>
