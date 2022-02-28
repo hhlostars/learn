@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    con {
+      width: 500px;
+    }
+
+    img {
+      width: 400px;
+      height: 400px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="con">
+    <img src="https://cdn.pixabay.com/photo/2021/08/24/15/38/sand-6570980_960_720.jpg" alt="1">
+    <img src="https://cdn.pixabay.com/photo/2013/02/21/19/06/drink-84533_960_720.jpg" alt="2">
+    <img src="https://img.zhouzh.tech/images/image-1604213190574.png" data-src="http://s11.mogucdn.com/mlcdn/c45406/171008_28ba9aade1cc95bjh1cfbb11c0ehi_640x960.jpg" data-name="huhe" alt="3">
+    <img src="https://img.zhouzh.tech/images/image-1604213190574.png" data-src="https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_960_720.jpg" alt="4">
+    <img src="https://img.zhouzh.tech/images/image-1604213190574.png" data-src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" alt="5">
+    <img src="https://img.zhouzh.tech/images/image-1604213190574.png" data-src="https://cdn.pixabay.com/photo/2017/03/26/21/54/yoga-2176668_960_720.jpg" alt="6">
+    <img src="https://img.zhouzh.tech/images/image-1604213190574.png" data-src="http://s11.mogucdn.com/mlcdn/c45406/181007_8678dj3i2ab7fi9l5ghgk30ij0180_640x854.jpg" alt="7">
+  </div>
+  <script>
+    const images = document.querySelectorAll('img');
+    const lazyLoad = () => {
+      images.forEach((item) => {
+        // 触发条件为img元素的CSSOM对象到视口顶部的距离 < 100px + 视口高度，+100px为了提前触发图片加载
+        if (item.getBoundingClientRect().top < document.documentElement.clientHeight + 100) {
+          if ('src' in item.dataset) {
+            item.src = item.dataset.src;
+          }
+          // console.log(document.documentElement.clientHeight);
+          // console.log(item.getBoundingClientRect());
+          // console.log(item.dataset);
+        }
+      })
+    }
+
+    // lazyLoad()
+      // document.addEventListener('scroll', _.throttle(lazyLoad, 200));
+      document.addEventListener('scroll', lazyLoad);
+  </script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.20/lodash.js"></script> -->
+</body>
+
+</html>

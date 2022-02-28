@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" oninput="throttleChange()">
+
+  <script>
+    // 时间戳
+    // function throttle(fn, wait) {
+    //   let time = 0
+    //   return function (...args) {
+    //     let now = Date.now()
+    //     if(now - time >= wait ) {
+    //       fn.apply(this, args)
+    //       time = now
+    //     }
+    //   }
+    // }
+
+    // setTimeout
+    function throttle(fn, wait) {
+      let timer = null
+      return function (...args) {
+
+        if (!timer) {
+          timer = setTimeout(() => {
+            timer = null
+            fn.apply(this, args)
+          }, wait);
+        }
+
+      }
+    }
+
+    throttleChange = throttle(function () {
+      console.log('change');
+    }, 2000)
+  </script>
+</body>
+
+</html>

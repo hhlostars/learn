@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function foo() {
+    //   console.log('foo被执行');
+    // }
+    // foo()
+    // // 生成器
+    // function* bar() {
+    //   console.log(1);
+    //   yield 'huhe';
+    //   console.log(2);
+    //   yield 'tom';
+    //   console.log(3);
+    //   yield 'jiji'
+    // }
+    // 迭代器
+    // const iterator = bar()
+    // console.log(iterator);
+    // const res1 = iterator.next()
+    // console.log(res1);
+    // const res2 = iterator.next()
+    // console.log(res2);
+    // const res3 = iterator.next()
+    // console.log(res3);
+    // const res4 = iterator.next()
+    // console.log(res4);
+
+    // function* createNum() {
+    //   for(let i = 1; i <= 10; i++) {
+    //     yield i
+    //   }
+    // }
+
+    // const numIt = createNum()
+    // console.log(numIt.next());
+
+    
+    // const p = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve('hello')
+    //   }, 1000);
+    // })
+    // // console.log(p.then());
+    // p.then(res => {
+    //   console.log(res);
+    // })
+
+    function* bar() {
+      const result = yield new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('success')
+        }, 1000);
+      })
+      console.log(result);
+    }
+
+    const it = bar()
+    it.next().value.then(res => {
+      // console.log();
+      // it.next()
+    })
+    it.next('sss')
+
+
+    function* foo() {
+      yield 1;
+      setTimeout(() => {
+        yield 2;
+      }, 100);
+      yield 3;
+    }
+
+    const fooIt = foo()
+    console.log(fooIt.next())
+  </script>
+</body>
+</html>

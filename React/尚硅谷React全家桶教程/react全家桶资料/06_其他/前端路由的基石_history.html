@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>前端路由的基石_history</title>
+	<meta charset="UTF-8">
+	<title>前端路由的基石_history</title>
 </head>
+
 <body>
-	<a href="http://www.atguigu.com" onclick="return push('/test1') ">push test1</a><br><br>
+	<a href="http://www.atguigu.com" id="demo">push test1</a><br><br>
 	<button onClick="push('/test2')">push test2</button><br><br>
 	<button onClick="replace('/test3')">replace test3</button><br><br>
 	<button onClick="back()">&lt;= 回退</button>
 	<button onClick="forword()">前进 =&gt;</button>
 
-	<script type="text/javascript" src="https://cdn.bootcss.com/history/4.7.2/history.js"></script>
+	<!-- <script type="text/javascript" src="https://cdn.bootcss.com/history/4.7.2/history.js"></script> -->
 	<script type="text/javascript">
 		// let history = History.createBrowserHistory() //方法一，直接使用H5推出的history身上的API
-		let history = History.createHashHistory() //方法二，hash值（锚点）
+		// let history = History.createHashHistory() //方法二，hash值（锚点）
+		let a = document.getElementById('demo')
 
-		function push (path) {
-			history.push(path)
-			return false
-		}
-
-		function replace (path) {
-			history.replace(path)
-		}
-
-		function back() {
-			history.goBack()
-		}
-
-		function forword() {
-			history.goForward()
-		}
-
-		history.listen((location) => {
-			console.log('请求路由路径变化了', location)
+		let stateObj = {
+			foo: "bar",
+		};
+		a.addEventListener('click', function(e) {
+			e.preventDefault()
+			console.log(e);
+			// history.pushState({ page: 1 }, 'title 1', '?page=1');
+			history.pushState(null, '', e.getAttribute('href'))
+			// history.pushState({a: 4}, 'page2', '/ll')
 		})
+
+		function push(path) {
+			let stateObj = {
+				foo: "bar",
+			};
+
+			// window.history.pushState(stateObj, "page 2", "bar.html");
+			// window.history.push(path)
+			// return false
+		}
+
+		// function replace(path) {
+		// 	history.replace(path)
+		// }
+
+		// function back() {
+		// 	history.goBack()
+		// }
+
+		// function forword() {
+		// 	history.goForward()
+		// }
+
+		// history.listen((location) => {
+		// 	console.log('请求路由路径变化了', location)
+		// })
 	</script>
 </body>
+
 </html>
