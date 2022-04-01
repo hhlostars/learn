@@ -1,10 +1,14 @@
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const { DefinePlugin } = require('webpack')
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js'
+    filename: 'js/bundle.js'
   },
   module: {
     rules: [
@@ -64,5 +68,15 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    // 一个个插件对象
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
+    new DefinePlugin({
+      BASE_URL: "'/'"
+    })
+  ]
 }
