@@ -1,4 +1,9 @@
-function maxSlidingWindow(nums, k) {
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var maxSlidingWindow = function(nums, k) {
     const res = []
     // 滑动过程中维持一个单调递减的栈
     // 用数组保存
@@ -9,10 +14,10 @@ function maxSlidingWindow(nums, k) {
                 stack.shift()
             }
         }
-        let top = stack[stack.length - 1]
+
         const num = nums[i]
-        while (top && num > top[0]) {
-            top = stack.pop()
+        while (stack.length && num > stack[stack.length - 1]) {
+            stack.pop()
         }
         stack.push([num, i])
         if (i >= k - 1) {
@@ -23,6 +28,6 @@ function maxSlidingWindow(nums, k) {
     }
     console.log(res)
     return res
-}
+};
 
 maxSlidingWindow([1,3,1,2,0,5], 3)
