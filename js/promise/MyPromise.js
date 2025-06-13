@@ -49,14 +49,15 @@ class MyPromise {
                         } else {
                             reject(this.#value)
                         }
-                    }
-                    const res = cb(this.#value)
-                    if (isPromiseLike(res)) {
-                        console.log(res)
-                        res.then(resolve, reject)
                     } else {
-                        resolve(res)
+                        const res = cb(this.#value)
+                        if (isPromiseLike(res)) {
+                            res.then(resolve, reject)
+                        } else {
+                            resolve(res)
+                        }
                     }
+
                 } catch (e) {
                     reject(e)
                 }
@@ -64,6 +65,22 @@ class MyPromise {
             this.#tasks.push(task)
             this.#run()
         })
+    }
+
+    catch(cb) {
+        return this.then(null, cb)
+    }
+
+    finally(cb) {
+        return this.then(
+            res => {
+                cb()
+                return res
+            },
+            rej => {
+                cb()
+                throw rej
+            })
     }
 }
 /**
@@ -78,46 +95,80 @@ class MyPromise {
 
 const p = new MyPromise((res, rej) => {
     res(123)
-    // rej(123)
+    // rej('wrong')
 })
 
-// b
+// // b
+// p.then(res => {
+//     console.log('res', res)
+// }, rej => {
+//     console.log('rej', rej)
+// })
+//
+// // c
+// p.then(res => {
+//     throw 'error'
+// }).then(null, rej => {
+//     console.log('捕获到错误', rej)
+// })
+//
+// // d
+// p.then(null, null).then(res => {
+//     console.log('空值传递res', res)
+// }, rej => {
+//     console.log('空值传递rej', rej)
+// })
+//
+// // e
+// p.then(null, rej => {
+//     console.log('e', rej)
+//     return 123
+// }).then(res => {
+//     console.log('后续都是resolve', res)
+// })
+//
+// // f
+// p.then(res => {
+//     return new Promise((resolve, reject) => {
+//         resolve('success')
+//         // reject(123)
+//     })
+// }).then(res => {
+//     console.log('返回的是promise--res', res)
+// }, rej => {
+//     console.log('返回的是promise--rej', rej)
+// })
+//
+//
+// p.catch(rej => {
+//     console.log('catch方法', rej)
+// }).then(res => {
+//     console.log(res)
+// })
+
+/**
+ * finally
+ * 返回的是调用该方法的promise的值
+ * 注意：当promise为reject时，要抛出异常 异常值为promis reject的值
+ */
+// p.finally(() => {
+//     console.log('finally')
+// }).then(res => {
+//     console.log(res)
+// })
+
 p.then(res => {
-    console.log('res', res)
-}, rej => {
-    console.log('rej', rej)
-})
-
-// c
-p.then(res => {
-    throw 'error'
-}).then(null, rej => {
-    console.log('捕获到错误', rej)
-})
-
-// d
-p.then(null, null).then(res => {
-    console.log('空值传递res', res)
-}, rej => {
-    console.log('空值传递rej', rej)
-})
-
-// e
-p.then(null, rej => {
-    console.log('e', rej)
-    return 123
+    console.log(res)
+    return 1234567
+}).finally(() => {
+    console.log('finally')
 }).then(res => {
-    console.log('后续都是resolve', res)
+    // 1234567
+    console.log(res)
 })
 
-// f
-p.then(res => {
-    return new Promise((resolve, reject) => {
-        resolve('success')
-        // reject(123)
-    })
-}).then(res => {
-    console.log('返回的是promise--res', res)
-}, rej => {
-    console.log('返回的是promise--rej', rej)
-})
+// p.finally(() => {
+//     console.log('finally')
+// }).catch(err => {
+//     console.log('finally后面捕获', err)
+// })

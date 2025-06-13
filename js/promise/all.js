@@ -1,40 +1,46 @@
-Promise.MyAll = function(promises) {
-    const pArr = [...promises]
-    const result = []
+Promise.MyAll = (promises) => {
+    const result = new Array(promises.length)
+    let count = 0
     return new Promise((resolve, reject) => {
-        pArr.forEach((p, index) => {
-            Promise.resolve(p).then(res => {
+        promises.forEach((promise, index) => {
+            Promise.resolve(promise).then(res => {
+                count++
                 result[index] = res
-                if (index + 1 === pArr.length) {
+                if (count === promises.length) {
                     resolve(result)
                 }
-            }, reject)
+            }, rej => {
+                reject(rej)
+            })
         })
-    })
 
+    })
 }
-console.time()
+
 const p1 = new Promise((res, rej) => {
     setTimeout(() => {
-        res(123)
-    }, 1000)
+        res(1)
+    }, 3000)
 })
-// const p2 = Promise.reject(1)
-// const p2 = new Promise((res, rej) => {
-//     setTimeout(() => {
-//         rej(456)
-//     }, 2000)
+const p2 = new Promise((res, rej) => {
+    res(123)
+})
+const p3 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res(3)
+    }, 2000)
+})
+
+// Promise.all([p1, p2, p3]).then(res => {
+//     console.log('原生all1', res)
+// })
+// Promise.all([1, 2, 3]).then(res => {
+//     console.log('原生all2', res)
 // })
 
-// Promise.MyAll([p1, p2]).then(res => {
-//     console.timeEnd()
-//     console.log(res)
-// })
-Promise.all([1, 2, 3]).then(res => {
-    console.timeEnd()
-    console.log(res)
+Promise.MyAll([p1, p2, p3]).then(res => {
+    console.log('all1', res)
 })
-// Promise.all([p1, p2]).then(res => {
-//     console.timeEnd()
-//     console.log(res)
+// Promise.MyAll([1, 2, 3]).then(res => {
+//     console.log('all2', res)
 // })
