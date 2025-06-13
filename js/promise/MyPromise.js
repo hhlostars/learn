@@ -82,6 +82,23 @@ class MyPromise {
                 throw rej
             })
     }
+
+    static resolve(val) {
+        if (val instanceof MyPromise) return val
+        return new MyPromise((resolve, reject) => {
+            if (isPromiseLike(val)) {
+                val.then(resolve, reject)
+            } else {
+                resolve(val)
+            }
+        })
+    }
+
+    static reject(val) {
+        return new MyPromise((resolve, reject) => {
+            reject(val)
+        })
+    }
 }
 /**
  * 1.then方法
@@ -157,18 +174,25 @@ const p = new MyPromise((res, rej) => {
 //     console.log(res)
 // })
 
-p.then(res => {
-    console.log(res)
-    return 1234567
-}).finally(() => {
-    console.log('finally')
-}).then(res => {
-    // 1234567
-    console.log(res)
-})
+// p.then(res => {
+//     console.log(res)
+//     return 1234567
+// }).finally(() => {
+//     console.log('finally')
+// }).then(res => {
+//     // 1234567
+//     console.log(res)
+// })
 
 // p.finally(() => {
 //     console.log('finally')
 // }).catch(err => {
 //     console.log('finally后面捕获', err)
 // })
+
+/**
+ * resolve
+ * 如果该值本身就是一个 Promise，那么该 Promise 将被返回
+ * 如果该值是一个 thenable 对象，Promise.resolve() 将调用其 then() 方法及其两个回调函数
+ * 否则，返回的 Promise 将会以该值兑现
+ */

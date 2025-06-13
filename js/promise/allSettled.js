@@ -1,3 +1,9 @@
+/**
+ * allSettled返回 所有结果
+ * 成功 {status: 'fulfilled', value: value}
+ * 失败 {status: 'rejected', reason: reject}
+ */
+
 Promise.MyAllSettled = (promises) => {
     const result = []
     let count = 0

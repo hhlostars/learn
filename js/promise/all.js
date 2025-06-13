@@ -1,3 +1,8 @@
+/**
+ * all返回 所有成功的结果
+ * 若有reject 返回该reject
+ */
+
 Promise.MyAll = (promises) => {
     const result = new Array(promises.length)
     let count = 0

@@ -1,3 +1,7 @@
+/**
+ * 返回第一个结果
+ */
+
 Promise.MyRace = (promises) => {
     return new Promise((resolve, reject) => {
         promises.forEach(promise => {
